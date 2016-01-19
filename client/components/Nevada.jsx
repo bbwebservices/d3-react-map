@@ -9,10 +9,8 @@ var Nevada = React.createClass({
 				return console.error(error);
 			}
 
-			console.log(usa)
 			var svg = d3.select("#nevada");
-			var states = topojson.feature(usa, usa.objects.gz_2010_us_040_00_500k.geometries[4]);
-			console.log(this.props)
+			var states = topojson.feature(usa, usa.objects.gz_2010_us_040_00_500k.geometries);
 			var projection = d3.geo.albersUsa()
 				.scale(500)
 				.translate([300, 600])

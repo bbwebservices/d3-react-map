@@ -6,6 +6,12 @@ var d3 = require('d3');
 
 var Main = React.createClass({
 
+	getInitialState: function () {
+		return {
+			test: 'test'
+		}
+	},
+
 	render: function () {
 		return (
 			<div>
