@@ -1,0 +1,10 @@
+#fullContainer {
+	height: 600px;
+    width: 100%;
+}
+
+#stateContainer {
+	position: relative;
+	height: 600px;
+    width: 100%;
+}
