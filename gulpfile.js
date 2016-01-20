@@ -23,7 +23,7 @@ gulp.task('watchify', function () {
 					console.log('There was an error compiling', err.message);
 				})
 				.pipe(source('bundle.js'))
-				.pipe(streamify(uglify()))
+				// .pipe(streamify(uglify()))
 				.pipe(gulp.dest('./dest/'));
 		})
 		.bundle()
@@ -31,7 +31,7 @@ gulp.task('watchify', function () {
 			console.log('There was an error compiling', err.message);
 		})
 		.pipe(source('bundle.js'))
-		.pipe(streamify(uglify()))
+		// .pipe(streamify(uglify()))
 		.pipe(gulp.dest('./dest/'));
 });
 

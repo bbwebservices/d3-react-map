@@ -6,12 +6,6 @@ var d3 = require('d3');
 
 var Main = React.createClass({
 
-	getInitialState: function () {
-		return {
-			test: 'test'
-		}
-	},
-
 	render: function () {
 		return (
 			<div>
@@ -23,8 +17,8 @@ var Main = React.createClass({
 });
 
 var mapSettings = {
-	width: 960,
-	height: 1200,
+	width: '100%',
+	height: '100%'
 }
 
 ReactDOM.render(<Main />, document.getElementById('fullContainer'));
