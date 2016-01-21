@@ -25,6 +25,8 @@ var States = React.createClass({
 			this.setState({stateObjects: stateArray, svg: svg, stateComps: [], mapp: usa});
 
 		}.bind(this));
+
+		d3.selectAll('svg').data();
 	},
 
 	render: function () {
