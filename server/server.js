@@ -2,7 +2,6 @@ var express = require('express');
 var compress = require('compression');
 var path = require('path');
 var twit = require('twit');
-var Promise = require('bluebird');
 var config = require('./../config');
 
 var app = express();
@@ -18,7 +17,8 @@ var T = new twit({
 })
 
 var twitterData;
-T.get('/search/tweets', {q: '#catsareassholes', count: 30, result_type: 'recent'}, function (err, data, response) {
+
+T.get('/search/tweets', {q: '#catsareassholes', count: 10, result_type: 'random'}, function (err, data, response) {
 	twitterData = data;
 })
 

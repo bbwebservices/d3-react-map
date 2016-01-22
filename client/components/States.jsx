@@ -5,14 +5,6 @@ var SingleState = require('./State.jsx')
 
 var States = React.createClass({
 
-	getInitialState: function () {
-		return {
-			stateObjects: [],
-			svg: null,
-			stateComps: []
-		}
-	},
-
 	componentDidMount: function () {
 		
 		d3.json('./../../shapefiles-and-topojson/usastates.json', function (error, usa) {
@@ -22,27 +14,47 @@ var States = React.createClass({
 			var svg = d3.select("#usa");
 			var stateArray = usa.objects.gz_2010_us_040_00_500k.geometries;
 
-			this.setState({stateObjects: stateArray, svg: svg, stateComps: [], mapp: usa});
+			this.props.placeStates(stateArray, svg, usa);
 
 		}.bind(this));
 
-		d3.selectAll('svg').data();
+	},
+
+	componentDidUpdate: function () {
+		console.log(this.props);
 	},
 
 	render: function () {
 
-		this.state.stateObjects.forEach(function (element) {
-			this.state.stateComps.push(<SingleState stateObject={element} stateId={element.properties.name} {...this.props} {...this.state} />);
+		// push state components to stateComps array
+		this.props.stateObjects.forEach(function (element) {
+			this.props.stateComps.push(<SingleState stateObject={element} stateId={element.properties.name} {...this.props} {...this.state} />);
 		}.bind(this));
 
-		var GenerateStates = this.state.stateComps.map(function (states) {
+		// map each state component to unique elements
+		var GenerateStates = this.props.stateComps.map(function (states) {
 			var uuID = uuid.v4();
 			return (<div style={styles} key={uuID}>{states}</div>)
-		}.bind(this))
-
+		}.bind(this))	
+		
+		// display tweets
+		var listOfTweets = null;
+		if(this.props.tweets){
+			listOfTweets = this.props.tweets.map(function (tweet) {
+				return (<li className="tweet">{tweet.text}<br/><strong>{tweet.user.location}</strong></li>)
+			})	
+		} 
+		
 		return ( 
-			<div id='stateContainer'>	
-				{GenerateStates}
+			<div>
+				<div id='stateContainer'>	
+					{GenerateStates}
+				</div>
+				<div id='tweetContainer'>
+					<ul>
+						{listOfTweets}
+					</ul>
+				</div>
 			</div>
 		)
 	}

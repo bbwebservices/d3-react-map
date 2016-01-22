@@ -20,6 +20,7 @@ var SingleState = React.createClass({
 
 	render: function () {
 		var trimmedId = this.props.stateId.replace(/\s/g, '');
+
 		return (
 			<svg id={trimmedId} width={this.props.width} height={this.props.height}></svg>
 		)
