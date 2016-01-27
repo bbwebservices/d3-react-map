@@ -1,4 +1,7 @@
-
-##run gulp
+npm install
 then
-##npm install
+gulp
+then
+npm start
+server will be running on port 3200
+
