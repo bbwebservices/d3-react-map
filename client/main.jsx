@@ -33,7 +33,7 @@ var Main = React.createClass({
 							console.error(err);
 						}
 						tweets = res.body.filter(function (obj) {
-							if(obj.place || obj.geo || obj.user.location) {
+							if(obj.place || obj.geo) {
 								return true;
 							}
 							return false;
