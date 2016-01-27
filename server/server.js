@@ -18,7 +18,8 @@ var T = new twit({
 
 var twitterData;
 
-T.get('/search/tweets', {q: '#catsareassholes', count: 10, result_type: 'random'}, function (err, data, response) {
+T.get('/search/tweets', {q: '#catsareassholes', count: 40, result_type: 'recent'}, function (err, data, response) {
+	console.log('response', data);
 	twitterData = data;
 })
 

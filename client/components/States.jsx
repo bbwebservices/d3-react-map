@@ -26,11 +26,12 @@ var States = React.createClass({
 
 	render: function () {
 
-		// push state components to stateComps array
-		this.props.stateObjects.forEach(function (element) {
-			this.props.stateComps.push(<SingleState stateObject={element} stateId={element.properties.name} {...this.props} {...this.state} />);
-		}.bind(this));
-
+		// push state components to stateComps array. only add on initial render.
+		if(this.props.stateComps.length === 0){
+			this.props.stateObjects.forEach(function (element) {
+				this.props.stateComps.push(<SingleState stateObject={element} stateId={element.properties.name} {...this.props} {...this.state} />);
+			}.bind(this));
+		}
 		// map each state component to unique elements
 		var GenerateStates = this.props.stateComps.map(function (states) {
 			var uuID = uuid.v4();
